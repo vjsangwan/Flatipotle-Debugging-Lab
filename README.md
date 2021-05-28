@@ -26,5 +26,3 @@ Flatiron School has decided to dabble in the food industry and just opened up a 
 * Did we pass down the *props* that we need?
 * How do we change state?
 * This app uses Semantic for styling - you will not need to worry about any errors here.
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/Flatipotle-Debugging-Lab'>Flatipotle Debugging Lab</a> on Learn.co and start learning to code for free.</p>
