@@ -4,9 +4,9 @@ Flatiron School has decided to dabble in the food industry and just opened up a 
 
 ## Setup
 
-* Clone this repository and `cd` into it
-* Run `npm install` or `yarn install` to install dependencies
-* Run `npm start` or `yarn start` to start the app locally
+- Clone this repository and `cd` into it
+- Run `npm install` to install dependencies
+- Run `npm start` to start the app locally
 
 ## Deliverables
 
@@ -15,14 +15,13 @@ Flatiron School has decided to dabble in the food industry and just opened up a 
 3. A user should be able to submit the form with their selections and see their order(s) listed under "All Orders."
 4. If a user selects any sides, they should be able to click on a button to view their side choices.
 
-
 ## Helpful Things to Keep In Mind
 
-* **Read** the errors you receive in your browser and console
-* `console.log`, `debugger`, and **React Dev Tools** are your friends
-* Did we *return* the values we want?
-* Why would **this** be undefined?
-* Did we import and export our components correctly?
-* Did we pass down the *props* that we need?
-* How do we change state?
-* This app uses Semantic for styling - you will not need to worry about any errors here.
+- **Read** the errors you receive in your browser and console
+- `console.log`, `debugger`, and **React Dev Tools** are your friends
+- Did we _return_ the values we want?
+- Why would **this** be undefined?
+- Did we import and export our components correctly?
+- Did we pass down the _props_ that we need?
+- How do we change state?
+- This app uses Semantic for styling - you will not need to worry about any errors here.
