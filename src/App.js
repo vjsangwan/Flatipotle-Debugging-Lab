@@ -25,7 +25,7 @@ class App extends Component {
           <img src={ require('./images/logo.png') } className="App-logo" alt="logo" />
         </header>
 
-        <Form />
+        <Form addOrder={this.addOrder}/>
 
         <div className="ui raised container segment">
           <h1 className="ui block header">All Orders</h1>
