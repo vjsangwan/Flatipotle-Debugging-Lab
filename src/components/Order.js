@@ -20,12 +20,15 @@ class Order extends Component {
           <b>Protein:</b><br />
           { this.props.protein.length > 0 ? this.props.protein.join(", ") : "None" }
           <br />
-          <b>Fillings:</b><br />
+          <b>Filgs:</b><br />
           { this.props.fillings.length > 0 ? this.props.fillings.join(", ") : "None" }
           <br />
           <b>Toppings:</b><br />
           { this.props.toppings.length > 0 ? this.props.toppings.join(", ") : "None" }
           <br />
+          {(this.props.protein.length===1 && this.props.protein.includes("Sofritas")) || this.props.protein.length===0 ?
+          <b style={{color:"green"}}> Veg</b> : <b style={{color:"red"}}> Non veg</b>
+          }
         </div>
         <div className="extra content">
           { this.props.sides.length > 0 ?

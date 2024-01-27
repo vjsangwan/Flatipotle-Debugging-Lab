@@ -32,15 +32,23 @@ class Form extends Component {
   }
 
   handleChange(event) {
-    console.log("clicked")
+    
     const itemType = event.target.name
     const item = event.target.value
 
-    !this.state[`${itemType}`].includes(item) ?
+    !this.state[`${itemType}`].includes(item) 
+    ? ((itemType==="protein" && this.state.protein.length<2) || (itemType==="fillings" && this.state.fillings.length<3) || itemType==="toppings" || (itemType==="sides" && this.state.sides.length<2) 
+    ?
       this.setState({
         [itemType]: this.state[`${itemType}`].concat(item)
       })
     :
+      this.setState({
+        [itemType]: this.state[`${itemType}`].filter(
+          ingr => ingr !== item
+        )
+      })) 
+      : 
       this.setState({
         [itemType]: this.state[`${itemType}`].filter(
           ingr => ingr !== item

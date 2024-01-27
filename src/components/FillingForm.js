@@ -3,7 +3,10 @@ import React, { Fragment } from 'react'
 const FillingForm = (props) => {
   return (
     <Fragment>
-      <h1><label htmlFor="fillings">Fillings</label></h1>
+      <label htmlFor="fillings">
+  <h1 style={{ fontSize: "2em" }}>Fillings</h1>
+  <p style={{ fontSize: "0.8em" }}>(choose one choice of rice and one choice of beans )</p>
+</label>
       <div className="inline fields ui centered grid">
         <div className="field">
           <div className="ui checkbox">

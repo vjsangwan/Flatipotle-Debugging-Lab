@@ -3,7 +3,10 @@ import React, { Fragment } from 'react'
 const SideForm = (props) => {
   return (
     <Fragment>
-      <h1><label htmlFor="sides">Sides</label></h1>
+      <label htmlFor="sides">
+  <h1 style={{ fontSize: "2em" }}>Sides</h1>
+  <p style={{ fontSize: "0.8em" }}>(choose any two)</p>
+</label>
       <div className="inline fields ui centered grid">
         <div className="field">
           <div className="ui checkbox">

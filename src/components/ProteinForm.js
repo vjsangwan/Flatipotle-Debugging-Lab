@@ -3,7 +3,10 @@ import React, { Fragment } from 'react'
 const ProteinForm = (props) => {
   return (
     <Fragment>
-      <h1><label htmlFor="protein">Protein</label></h1>
+      <label htmlFor="protein">
+  <h1 style={{ fontSize: "2em" }}>Protein</h1>
+  <p style={{ fontSize: "0.8em" }}>(choose any two)</p>
+</label>
       <div className="inline fields ui centered grid">
         <div className="field">
           <div className="ui checkbox">
