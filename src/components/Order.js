@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import Side from './Side'
 
 class Order extends Component {
-  state = {
-    isClicked: false
+  constructor(props){
+    super(props);
+  this.state = {
+
+    isClicked:false
   }
+}
 
   handleClick = () => {
     this.setState({isClicked:!this.state.isClicked})
@@ -20,7 +24,7 @@ class Order extends Component {
           <b>Protein:</b><br />
           { this.props.protein.length > 0 ? this.props.protein.join(", ") : "None" }
           <br />
-          <b>Filgs:</b><br />
+          <b>Fillings:</b><br />
           { this.props.fillings.length > 0 ? this.props.fillings.join(", ") : "None" }
           <br />
           <b>Toppings:</b><br />

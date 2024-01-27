@@ -35,10 +35,11 @@ class Form extends Component {
     
     const itemType = event.target.name
     const item = event.target.value
+    
 
-    !this.state[`${itemType}`].includes(item) 
-    ? ((itemType==="protein" && this.state.protein.length<2) || (itemType==="fillings" && this.state.fillings.length<3) || itemType==="toppings" || (itemType==="sides" && this.state.sides.length<2) 
-    ?
+    !this.state[`${itemType}`].includes(item)
+    ? ((itemType==="protein" && this.state.protein.length<2) || (itemType==="fillings" && this.state.fillings.length<3 && (((item==="White Rice" || item==="Brown Rice") && !this.state[`${itemType}`].some(el=>el.includes("Rice"))) || ((item==="Black Beans" || item==="Pinto Beans") && !this.state[`${itemType}`].some(el=>el.includes("Beans")))||item==="Fajita Veggies" )) || itemType==="toppings" || (itemType==="sides" && this.state.sides.length<2) 
+    ? 
       this.setState({
         [itemType]: this.state[`${itemType}`].concat(item)
       })
