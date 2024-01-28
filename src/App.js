@@ -7,6 +7,8 @@ class App extends Component {
   state= {
     orders: [],
     hasUnsavedChanges: false,
+    showSaveButton:null,
+    showDeleteButton:null,
   }
 
 handleSave = () => {
@@ -26,7 +28,22 @@ handleSave = () => {
  
 componentDidMount(){
  // read cookie and maintain a state variable from cookie;
- 
+ const getCookie= (name)=>{
+  
+  const cookies=document.cookie.split(';')
+  for(const cookie of cookies){
+  const[cookieName, cookieValue]=cookie.trim().split("=")  
+  if(cookieName===name){
+    return cookieValue;
+  }
+  }
+  return null;
+}
+
+
+
+ getCookie('isSaveEnabled')==='true' ? this.setState({showSaveButton:true}) : this.setState({showSaveButton:false})
+ getCookie('isDeleteEnabled')==='true'?this.setState({showDeleteButton:true}) : this.setState({showDeleteButton:false})
 
 
   const order=JSON.parse(localStorage.getItem('orders'))
@@ -63,8 +80,8 @@ componentDidMount(){
       <div style={{ position: 'relative' }}>
       <h1 className="ui block header">All Orders</h1>
 
-     <button onClick={this.handleSave} disabled={!this.state.hasUnsavedChanges} style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: 100 }}>Save</button>
-      <button onClick={this.handleDelete} disabled={this.state.orders.length===0} style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: 20 }}>Delete</button>
+     {this.state.showSaveButton && (<button onClick={this.handleSave} disabled={!this.state.hasUnsavedChanges} style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: 100 }}>Save</button>)}
+     {this.state.showDeleteButton && (<button onClick={this.handleDelete} disabled={this.state.orders.length===0} style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: 20 }}>Delete</button>)}
     </div>   
           <div className="ui three cards">
             {orders}
