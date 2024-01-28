@@ -16,7 +16,7 @@ class Form extends Component {
   constructor(props){
     super(props)
   this.state = {
-    ...DEFAULT_STATE
+    ...DEFAULT_STATE,
   };
   this.handleChange=this.handleChange.bind(this)
   this.handleSubmit=this.handleSubmit.bind(this)
@@ -64,25 +64,25 @@ class Form extends Component {
       <div className="ui raised container segment">
         <h1 className="ui block header">Order Form</h1>
         <form className="ui form" id="order-form" onSubmit={ this.handleSubmit }>
-          <ProteinForm
+          { ccm.showProtein && (<ProteinForm
             protein={ this.state.protein }
             handleChange={ this.handleChange }
-          />
+          />)}
 
-          <FillingForm
+        { ccm.showFillings && (<FillingForm
             fillings={ this.state.fillings }
             handleChange={ this.handleChange }
-          />
+          />)}
 
-          <ToppingForm
+        { ccm.showToppings && (<ToppingForm
             toppings={ this.state.toppings }
             handleChange={ this.handleChange }
-          />
+          />)}
 
-          <SideForm
+        { ccm.showSides && (<SideForm
             sides={ this.state.sides }
             handleChange={ this.handleChange }
-          />
+          />)}
 
           <br />
 

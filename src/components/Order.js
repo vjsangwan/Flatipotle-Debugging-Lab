@@ -17,6 +17,7 @@ class Order extends Component {
   render() {
     return (
       <div className="ui centered raised card">
+        <button> Edit </button>
         <div className="image">
           <img src={ require("../images/burrito-bowl.jpg") } alt="burrito bowl" />
         </div>
