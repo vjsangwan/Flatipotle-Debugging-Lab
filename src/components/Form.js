@@ -9,15 +9,20 @@ const DEFAULT_STATE = {
   protein: [],
   fillings: [],
   toppings: [],
-  sides: []
+  sides: [],
+  orderId:1,
 }
 
 class Form extends Component {
   constructor(props){
     super(props)
-  this.state = {
-    ...DEFAULT_STATE,
-  };
+  this.state = 
+    this.props.orderToBeUpdated ?
+    {  ...this.props.orderToBeUpdated}
+    :
+      {...DEFAULT_STATE}
+    
+  
   this.handleChange=this.handleChange.bind(this)
   this.handleSubmit=this.handleSubmit.bind(this)
 }
@@ -28,7 +33,8 @@ class Form extends Component {
     this.props.addOrder(this.state)
 
     this.setState({
-      ...DEFAULT_STATE
+      ...DEFAULT_STATE,
+      orderId:this.state.orderId+1
     })
   }
 
@@ -36,8 +42,6 @@ class Form extends Component {
     
     const itemType = event.target.name
     const item = event.target.value
-    
-
     !this.state[`${itemType}`].includes(item)
     ? ((itemType==="protein" && this.state.protein.length<2) || (itemType==="fillings" && this.state.fillings.length<3 && (((item==="White Rice" || item==="Brown Rice") && !this.state[`${itemType}`].some(el=>el.includes("Rice"))) || ((item==="Black Beans" || item==="Pinto Beans") && !this.state[`${itemType}`].some(el=>el.includes("Beans")))||item==="Fajita Veggies" )) || itemType==="toppings" || (itemType==="sides" && this.state.sides.length<2) 
     ? 
@@ -48,7 +52,7 @@ class Form extends Component {
       this.setState({
         [itemType]: this.state[`${itemType}`].filter(
           ingr => ingr !== item
-        )
+        ),
       })) 
       : 
       this.setState({
@@ -59,7 +63,6 @@ class Form extends Component {
   }
 
   render() { 
-    console.log(ccm)
     return(
       <div className="ui raised container segment">
         <h1 className="ui block header">Order Form</h1>

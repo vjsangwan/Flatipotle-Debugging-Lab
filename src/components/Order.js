@@ -14,14 +14,16 @@ class Order extends Component {
     this.setState({isClicked:!this.state.isClicked})
   }
 
+  
   render() {
     return (
       <div className="ui centered raised card">
-        <button> Edit </button>
+        <button onClick={()=>this.props.handleEdit(this.props.orderId)}> Edit </button>
         <div className="image">
           <img src={ require("../images/burrito-bowl.jpg") } alt="burrito bowl" />
         </div>
         <div className="content">
+          <b>Order # {this.props.orderId}</b><br />
           <b>Protein:</b><br />
           { this.props.protein.length > 0 ? this.props.protein.join(", ") : "None" }
           <br />

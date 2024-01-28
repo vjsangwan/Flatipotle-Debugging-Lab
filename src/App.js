@@ -9,6 +9,21 @@ class App extends Component {
     hasUnsavedChanges: false,
     showSaveButton:null,
     showDeleteButton:null,
+    orderToBeUpdated:null
+  }
+  handleEdit=(orderId)=>{
+    const orderToBeUpdated=this.state.orders.find(order=>order.orderId===orderId)
+    const index=this.state.orders.indexOf(orderToBeUpdated);
+    this.setState({
+      orderToBeUpdated:orderToBeUpdated,
+
+    })
+    orderToBeUpdated.protein.length>0 && orderToBeUpdated.protein.forEach(protein=>{  
+      document.getElementById(protein).checked=true
+    })
+    
+
+    console.log(orderToBeUpdated)
   }
 
 handleSave = () => {
@@ -40,8 +55,6 @@ componentDidMount(){
   return null;
 }
 
-
-
  getCookie('isSaveEnabled')==='true' ? this.setState({showSaveButton:true}) : this.setState({showSaveButton:false})
  getCookie('isDeleteEnabled')==='true'?this.setState({showDeleteButton:true}) : this.setState({showDeleteButton:false})
 
@@ -63,17 +76,13 @@ componentDidMount(){
   }
 
   render() {
-    const orders = this.state.orders.map( (order, idx) =>
-      <Order key={idx} {...order}/>
-      )
-
     return (
       <div className="App">
         <header className="App-header">
           <img src={ require('./images/logo.png') } className="App-logo" alt="logo" />
         </header>
 
-        <Form addOrder={this.addOrder}/>
+        <Form addOrder={this.addOrder} orderToBeUpdated={this.state.orderToBeUpdated}/>
 
         <div className="ui raised container segment">
       
@@ -83,9 +92,11 @@ componentDidMount(){
      {this.state.showSaveButton && (<button onClick={this.handleSave} disabled={!this.state.hasUnsavedChanges} style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: 100 }}>Save</button>)}
      {this.state.showDeleteButton && (<button onClick={this.handleDelete} disabled={this.state.orders.length===0} style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: 20 }}>Delete</button>)}
     </div>   
-          <div className="ui three cards">
-            {orders}
-          </div>
+        <div className="ui three cards">
+          {this.state.orders.map( (order, idx) =>
+            <Order key={idx} {...order} handleEdit={this.handleEdit}/>
+          )}
+        </div>
         </div>
       </div>
     )
