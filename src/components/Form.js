@@ -3,6 +3,7 @@ import ProteinForm from './ProteinForm'
 import FillingForm from './FillingForm'
 import ToppingForm from './ToppingForm'
 import SideForm from './SideForm'
+import ccm from '../ccm.json'
 
 const DEFAULT_STATE = {
   protein: [],
@@ -57,7 +58,8 @@ class Form extends Component {
       })
   }
 
-  render() {
+  render() { 
+    console.log(ccm)
     return(
       <div className="ui raised container segment">
         <h1 className="ui block header">Order Form</h1>
